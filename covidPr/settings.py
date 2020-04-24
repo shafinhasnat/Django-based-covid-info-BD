@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,12 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'o!a^mbncxsfpd7(+y-e@-9in#tvhw_^m*^+zcw$i=oo9(l6(z&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-env = 'prod'
-
-if env == 'dev':
-    DEBUG = True
-else:
-    DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -78,7 +74,7 @@ WSGI_APPLICATION = 'covidPr.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
+env = 'dev'
 if env == 'dev':
     DATABASES = {
         'default': {
@@ -92,17 +88,6 @@ if env == 'dev':
         }
     }
 else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'd4p647u5iu2ahf',
-            'USER':'nwsubqzqyczmzp',
-            'PASSWORD':'f66513ec3ba0b24d8c8297f07f075d4454dd745530a4f008afa3d2fe1fd8d5c5',
-            'HOST':'ec2-35-172-85-250.compute-1.amazonaws.com',
-            'PORT':'5432'
-
-        }
-    }
     pass
 
 # Password validation
@@ -123,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ALLOWED_HOSTS = ['192.168.0.103', 'localhost', '127.0.0.1', 'bdcovid.herokuapp.com']
+ALLOWED_HOSTS = ['192.168.0.103', 'localhost', '127.0.0.1', 'https://bdcovid.herokuapp.com/']
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -144,3 +129,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+django_heroku.settings(locals())

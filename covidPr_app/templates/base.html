@@ -113,18 +113,20 @@
 
   </style>
 	<title>COVIDbd | {{ title }}</title>
+  <link rel="icon" href="{% static 'icon.ico' %}" type="image/icon type">
 </head>
 <body>
 	<header class='site-header'>
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class="container">
+          <img class='title-img' src="{% static 'logo.png' %}">
           <a class="navbar-brand mr-4" href="{% url 'home' %}">COVIDbd</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="#">About</a>
+              <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
             </div>
           </div>
         </div>
@@ -147,10 +149,10 @@ function myFunction() {
       <div class="popup btn btn-outline-light btn-sm" onclick="myFunction()">mtx.io Devs
         <span class="popuptext" id="myPopup">
           <div class="border border-light rounded-lg p-2 mb-2 ml-1 mr-1">
-            Data:<br> <a href="#" class="btn btn-outline-light btn-sm">Abdullah Shoumik</a>
+            Data:<br> <a href="https://www.facebook.com/ashoumik1" class="btn btn-outline-light btn-sm">Abdullah Shoumik</a>
           </div>
           <div class="border border-light rounded-lg p-2  mb-1 ml-1 mr-1">
-            Web:<br> <a href="#" class="btn btn-outline-light btn-sm">Shafin Hasnat</a>
+            Web:<br> <a href="https://www.facebook.com/shafin.hasnat" class="btn btn-outline-light btn-sm">Shafin Hasnat</a>
           </div>
         </span>
       </div> 

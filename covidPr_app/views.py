@@ -24,3 +24,6 @@ def details(request):
 	data = CovidData.objects.all()
 	return render(request, 'details.html', {'title': title, 'data': data})
 
+def about(request):
+	title = 'About'
+	return render(request, 'about.html', {'title': title})

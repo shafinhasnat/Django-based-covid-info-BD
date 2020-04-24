@@ -1,0 +1,161 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+
+  <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+  <style type="text/css">
+
+    
+    .foot {
+       position: fixed;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       text-align: center;
+       padding-bottom: 10px;
+
+    }
+    .center-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .dash {
+    width: 250px; /* You can set the dimensions to whatever you want */
+    height: 250px;
+    object-fit: contain;
+    }
+    .title-img{
+    width: 30px; /* You can set the dimensions to whatever you want */
+    height: 30px;
+    object-fit: contain;
+    }
+    @media only screen and (max-width: 1000px){
+    .dash {
+    width: 200px; /* You can set the dimensions to whatever you want */
+    height: 200px;
+    object-fit: contain;
+    }
+    }
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+  </style>
+	<title>COVIDbd | {{ title }}</title>
+</head>
+<body>
+	<header class='site-header'>
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{% url 'home' %}">COVIDbd</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="#">About</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+	</header>
+	<br>
+	<div class='container p-5'>
+    {% block scripts %}{% endblock scripts %}
+		{% block content %}{% endblock %}
+
+<script>
+// When the user clicks on div, open the popup
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+</script> 
+    <div class="text-center foot p-2 bg-dark text-white">
+      Developer: 
+      <div class="popup btn btn-outline-light btn-sm" onclick="myFunction()">mtx.io Devs
+        <span class="popuptext" id="myPopup">
+          <div class="border border-light rounded-lg p-2 mb-2 ml-1 mr-1">
+            Data:<br> <a href="#" class="btn btn-outline-light btn-sm">Abdullah Shoumik</a>
+          </div>
+          <div class="border border-light rounded-lg p-2  mb-1 ml-1 mr-1">
+            Web:<br> <a href="#" class="btn btn-outline-light btn-sm">Shafin Hasnat</a>
+          </div>
+        </span>
+      </div> 
+    </div>
+
+	</div>
+
+</body>

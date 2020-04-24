@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div  class="border-bottom mb-4 p-2">
+      <h3>
+        Detailed data for COVID-19 since 03-08-2020 <a class='btn btn-sm btn-outline-dark' href="{% static 'ess/COVID-19_in_bangladesh.csv' %}" download>download csv</a>
+      </h3>
+    </div>
+      <table class="table table-bordered table-light" style="font-size:12px">
+         
+            <tr>
+              <th class="table-warning"><center>Date<br>(mm-dd-yyyy)</center></th>
+              <th class="table-warning"><center>Cases<br>(unit)</center></th>
+              <th class="table-warning"><center>Deaths<br>(unit)</center></th>
+              <th class="table-warning"><center>Recoveries<br>(unit)</center></th>
+            </tr>
+          
+         
+            <tr>
+              <td class="table-secondary"><center>{% for i in data %}{{ i.date }}<br>{% endfor %}</center></td>
+              <td class="table-info"><center>{% for i in data %}{{ i.case }}<br>{% endfor %}</center></td>
+              <td class="table-danger"><center>{% for i in data %}{{ i.death }}<br>{% endfor %}</center></td>
+              <td class="table-success"><center>{% for i in data %}{{ i.recover }}<br>{% endfor %}</center></td>
+            </tr>
+          
+        </table> 
+{% endblock %}

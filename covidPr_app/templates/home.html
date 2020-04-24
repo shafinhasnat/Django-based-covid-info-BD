@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <div class='border border-dark rounded-lg p-2 mb-4'>
+      <div class="border-bottom mb-4 p-2">
+          <h3>
+            Todays COVID-19 update in Bangladesh
+          </h3>
+          <small>{{ latest_data.date }}</small>
+      </div>
+      <table class="table table-bordered table-light">
+         
+            <tr>
+              <th class="table-warning"><center>Cases</center></th>
+              <th class="table-warning"><center>Deaths</center></th>
+              <th class="table-warning"><center>Recoveries</center></th>
+            </tr>
+          
+         
+            <tr>
+              <td class="table-info"><center>{{ latest_case }}</center></td>
+              <td class="table-danger"><center>{{ latest_death }}</center></td>
+              <td class="table-success"><center>{{ latest_recover }}</center></td>
+            </tr>
+          
+        </table>
+    </div>
+    <div class='border border-dark rounded-lg p-2 mb-4'>
+      <div class="border-bottom mb-4 p-2">
+          <h3>
+            Total COVID-19 data in Bangladesh till today <a href="{% url 'details' %}" class='btn btn-sm btn-outline-dark'>Details</a>
+          </h3>
+          <small>{{ latest_data.date }}</small>
+      </div>
+      <table class="table table-bordered table-light">
+         
+            <tr>
+              <th class="table-warning"><center>Cases</center></th>
+              <th class="table-warning"><center>Deaths</center></th>
+              <th class="table-warning"><center>Recoveries</center></th>
+            </tr>
+          
+         
+            <tr>
+              <td class="table-info"><center>{{ latest_data.case }}</center></td>
+              <td class="table-danger"><center>{{ latest_data.death }}</center></td>
+              <td class="table-success"><center>{{ latest_data.recover }}</center></td>
+            </tr>
+          
+        </table>
+    </div>
+    <div class='border border-dark rounded-lg p-2 mb-4'>
+      <div class="border-bottom mb-4 p-2">
+          <h3>
+            Tomorrows COVID-19 predictions
+          </h3>
+          <small>It is just a computer prediction. Real cases may not match.</small>
+      </div>
+
+      <table class="table table-bordered table-light">
+         
+            <tr>
+              <th class="table-warning"><center>Cases</center></th>
+              <th class="table-warning"><center>Deaths</center></th>
+            </tr>
+          
+         
+            <tr>
+              <td class="table-info"><center>{{ case_pred }}</center></td>
+              <td class="table-danger"><center>{{ death_pred }}</center></td>
+            </tr>
+          
+        </table>
+    </div>
+    <div class='border border-dark rounded-lg p-2 mb-4'>
+      <h3 class="border-bottom mb-4 p-2">
+        Graph of cases in Bangladesh:
+      </h3>
+      <canvas id="case" style="height:30vh; width:50vw"></canvas>
+    </div>
+    <div class='border border-dark rounded-lg p-2 mb-4'>
+      <h3 class="border-bottom mb-4 p-2">
+        Graph of deaths in Bangladesh:
+      </h3>
+      <canvas id="death" style="height:30vh; width:50vw"></canvas>
+    </div>
+    <div class='border border-dark rounded-lg p-2 mb-4'>
+      <h3 class="border-bottom mb-4 p-2">
+        Graph of recovery in Bangladesh:
+      </h3>
+      <canvas id="recover" style="height:30vh; width:50vw"></canvas>
+    </div>
+  </div>
+<!-- [{% for i in data %}'{{ i.date }}',{% endfor %}]
+[{% for i in data %}{{ i.recover }},{% endfor %}] -->
+  <script>
+    var ctx = document.getElementById('case').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [{% for i in data %}'{{ i.date }}',{% endfor %}],
+            datasets: [{
+                label: 'Cases',
+                data: [{% for i in data %}{{ i.case }},{% endfor %}],
+                backgroundColor: [
+                    'rgba(50, 50, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(50, 50, 255, 0.2)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });  
+    var ctx = document.getElementById('death').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [{% for i in data %}'{{ i.date }}',{% endfor %}],
+            datasets: [{
+                label: 'Deaths',
+                data: [{% for i in data %}{{ i.death }},{% endfor %}],
+                backgroundColor: [
+                    'rgba(255, 50, 50, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 50, 50, 0.2)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });  
+    var ctx = document.getElementById('recover').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [{% for i in data %}'{{ i.date }}',{% endfor %}],
+            datasets: [{
+                label: 'Recoveries',
+                data: [{% for i in data %}{{ i.recover }},{% endfor %}],
+                backgroundColor: [
+                    'rgba(50, 255, 50, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(50, 255, 50, 0.2)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });   
+
+  </script>
+{% endblock %}

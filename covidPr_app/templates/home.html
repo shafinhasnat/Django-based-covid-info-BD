@@ -103,11 +103,12 @@
             label: 'Cases',
             data: [{% for i in data %}{{ i.case }},{% endfor %}],
                 borderColor: [
-                    'rgba(50, 50, 255, 0.9)'
+                    'rgba(50, 50, 255, 0.7)'
                 ],
                 backgroundColor: [
                     'rgba(50, 50, 255, 0.2)'
                 ],
+                borderWidth: [2]
         }, {
             label: 'Case prediction',
             data: [{% for i in pred_case %}{{ i }},{% endfor %}],
@@ -117,6 +118,7 @@
                 backgroundColor: [
                     'rgba(50, 255, 50, 0)'
                 ],
+                borderWidth: [2],
             borderDash: [10,5],
 
             // Changes this dataset to become a line
@@ -143,11 +145,12 @@
             label: 'Deaths',
             data: [{% for i in data %}{{ i.death }},{% endfor %}],
                 borderColor: [
-                    'rgba(255, 50, 50, 0.9)'
+                    'rgba(255, 50, 50, 0.7)'
                 ],
                 backgroundColor: [
                     'rgba(255, 50, 50, 0.2)'
                 ],
+                borderWidth: [2]
         }, {
             label: 'Death prediction',
             data: [{% for i in pred_death %}{{ i }},{% endfor %}],
@@ -157,6 +160,7 @@
                 backgroundColor: [
                     'rgba(50, 255, 50, 0)'
                 ],
+                borderWidth: [2],
             borderDash: [10,5],
 
             // Changes this dataset to become a line
@@ -186,8 +190,9 @@
                     'rgba(50, 255, 50, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(50, 255, 50, 0.9)'
+                    'rgba(50, 255, 50, 0.7)'
                 ],
+                borderWidth: [2]
             }]
         },
         options: {

@@ -10,9 +10,9 @@ def home(request):
 	latest_death = abs(int(CovidData.objects.order_by('-pk')[1].death)-int(CovidData.objects.order_by('-pk')[0].death))
 	latest_case = abs(int(CovidData.objects.order_by('-pk')[1].case)-int(CovidData.objects.order_by('-pk')[0].case))
 	latest_recover = abs(int(CovidData.objects.order_by('-pk')[1].recover)-int(CovidData.objects.order_by('-pk')[0].recover))
-	case_pred_total, death_pred_total = forcast()
-	case_pred = abs(int(case_pred_total)-int(latest_data.case))
-	death_pred = abs(int(death_pred_total)-int(latest_data.death))
+	case_pred, death_pred = forcast()
+	# case_pred = abs(int(case_pred_total)-int(latest_data.case))
+	# death_pred = abs(int(death_pred_total)-int(latest_data.death))
 
 	pred_death, pred_case = predictionGraph()
 	# print(case_pred, death_pred)

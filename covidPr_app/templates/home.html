@@ -44,7 +44,7 @@
          
             <tr>
               <td class="table-info"><center>{{ latest_data.case }}</center></td>
-              <td class="table-danger"><center>{{ latest_data.death }}</center></td>
+              <td class="table-danger"><center>{{ latest_data.death }} ({{ death_percentage }}%)</center></td>
               <td class="table-success"><center>{{ latest_data.recover }}</center></td>
             </tr>
           
@@ -81,7 +81,7 @@
     </div>
     <div class='border border-dark rounded-lg p-2 mb-4'>
       <h3 class="border-bottom mb-4 p-2">
-        Graph of deaths in Bangladesh:
+        Graph of deaths in Bangladesh (death rate {{ death_percentage }}%):
       </h3>
       <canvas id="death" style="height:30vh; width:50vw"></canvas>
     </div>

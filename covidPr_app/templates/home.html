@@ -73,6 +73,17 @@
         </table>
     </div>
     <div class='border border-dark rounded-lg p-2 mb-4'>
+      <div class="border-bottom mb-4 p-2">
+          <h3>
+            Division wise case distribution:
+          </h3>
+          <small>Tap on the markers for details.</small>
+      </div>
+      <div class="center-screen mapp">
+        <div id="mapid" class="mapp"></div>
+      </div>
+    </div>
+    <div class='border border-dark rounded-lg p-2 mb-4'>
       <h3 class="border-bottom mb-4 p-2">
         Graph of cases in Bangladesh:
       </h3>
@@ -89,16 +100,6 @@
         Graph of recovery in Bangladesh:
       </h3>
       <canvas id="recover" style="height:30vh; width:50vw"></canvas>
-    </div>
-    <div class='border border-dark rounded-lg p-2 mb-4'>
-      <div class="border-bottom mb-4 p-2">
-          <h3>
-            Division wise case distribution:
-          </h3>
-          <small>Tap on the markers for details.</small>
-      </div>
-      <div class="center-screen">
-      <div id="mapid" style="height:40vh; width:52vw"></div></div>
     </div>
   </div>
 <!-- [{% for i in data %}'{{ i.date }}',{% endfor %}]
@@ -215,7 +216,6 @@
         }
     });
 
-
          // Creating map options
          var mapOptions = {
             center: [23.777176,   90.399452],
@@ -224,13 +224,13 @@
          
          var map = new L.map('mapid', mapOptions);
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hhZmluaGFzbmF0IiwiYSI6ImNrOWgzMWxkYjBzenkzb25hZXVtdGh0MngifQ.qmrBTDRAsIoUT_r7Wd6yMg', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1Ijoic2hhZmluaGFzbmF0IiwiYSI6ImNrOWgzMWxkYjBzenkzb25hZXVtdGh0MngifQ.qmrBTDRAsIoUT_r7Wd6yMg'
-}).addTo(map);
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1Ijoic2hhZmluaGFzbmF0IiwiYSI6ImNrOWgzMWxkYjBzenkzb25hZXVtdGh0MngifQ.qmrBTDRAsIoUT_r7Wd6yMg'
+            }).addTo(map);
          
          // Creating a map object
          
@@ -240,44 +240,18 @@
          // Adding layer to the map
          map.addLayer(layer);
           
-          
-         var markerDHK = L.marker([23.777176,   90.399452]);
-         markerDHK.bindPopup('<p class="border-bottom"><b>Dhaka division</b><p>Cases: {{ division_wise.0 }}').openPopup();
-         markerDHK.addTo(map);
-          
-          
-         var markerCTG = L.marker([22.3569,   91.7832]);
-         markerCTG.bindPopup('<p class="border-bottom"><b>Chattogram division</b><p>Cases: {{ division_wise.1 }}').openPopup();
-         markerCTG.addTo(map);
-          
-          
-         var markerKLN = L.marker([22.8456,   89.5403]);
-         markerKLN.bindPopup('<p class="border-bottom"><b>Khulna division</b><p>Cases: {{ division_wise.4 }}').openPopup();
-         markerKLN.addTo(map);
-          
-          
-         var markerSYL = L.marker([24.8949,   91.8687]);
-         markerSYL.bindPopup('<p class="border-bottom"><b>Sylhet division</b><p>Cases: {{ division_wise.2 }}').openPopup();
-         markerSYL.addTo(map);
-          
-          
-         var markerRNG = L.marker([25.7439,   89.2752]);
-         markerRNG.bindPopup('<p class="border-bottom"><b>Rangpur division</b><p>Cases: {{ division_wise.3 }}').openPopup();
-         markerRNG.addTo(map);
-          
-          
-         var markerBAR = L.marker([22.7010,   90.3535]);
-         markerBAR.bindPopup('<p class="border-bottom"><b>Barishal division</b><p>Cases: {{ division_wise.6 }}').openPopup();
-         markerBAR.addTo(map);
-          
-          
-         var markerRAJ = L.marker([24.3745,   88.6042]);
-         markerRAJ.bindPopup('<p class="border-bottom"><b>Rajshahi division</b><p>Cases: {{ division_wise.7 }}').openPopup();
-         markerRAJ.addTo(map);
-          
-          
-         var markerMYM = L.marker([24.7471,   90.4203]);
-         markerMYM.bindPopup('<p class="border-bottom"><b>Mymensingh  division</b><p>Cases: {{ division_wise.5 }}').openPopup()
-         markerMYM.addTo(map);
+         // var markerDHK = L.marker([23.777176,   90.399452]);
+         // markerDHK.bindPopup('<p class="border-bottom"><b>Dhaka division</b><p>Cases:').openPopup();
+         // markerDHK.addTo(map);
+         var districe_name = ['Bagerhat', 'Bandarban', 'Barguna', 'Barisal', 'Bhola', 'Bogura', 'Brahamanbaria', 'Chandpur', 'Chapainawabganj', 'Chattogram', 'Chuadanga', "Cox's Bazar", 'Cumilla', 'Dhaka', 'Dinajpur', 'Faridpur', 'Feni', 'Gaibandha', 'Gazipur', 'Gopalganj', 'Habiganj', 'Jamalpur', 'Jessore', 'Jhalokati', 'Jhenaidah', 'Joypurhat', 'Khagrachhari', 'Khulna', 'Kishoreganj', 'Kurigram', 'Kushtia', 'Lakshmipur', 'Lalmonirhat', 'Madaripur', 'Magura', 'Manikganj', 'Maulvibazar', 'Meherpur', 'Munshiganj', 'Mymensingh', 'Naogaon', 'Narail', 'Narayanganj', 'Narsingdi', 'Natore', 'Netrakona', 'Nilphamari', 'Noakhali', 'Pabna', 'Panchagarh', 'Patuakhali', 'Pirojpur', 'Rajbari', 'Rajshahi', 'Rangamati', 'Rangpur', 'Satkhira', 'Shariatpur', 'Sherpur', 'Sirajganj', 'Sunamganj', 'Sylhet', 'Tangail', 'Thakurgaon']
+         // console.log("{{ case }}");
+        for (i=0; i<64; i++){
+         var name = districe_name[i];
+         // var case = {{ case }};
+         var marker = L.marker([{{ lat }}[i],   {{ lon }}[i]]);
+         marker.bindPopup(`<p class="border-bottom"><b>${name}</b><p>Cases: ${ {{ case }}[i] }`).openPopup();
+         marker.addTo(map);
+
+        }
   </script>
 {% endblock %}

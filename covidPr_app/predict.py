@@ -28,3 +28,17 @@ def division():
         for i in csv_reader:
             num.append(int(i[1]))
     return num
+
+def district():
+    name = []
+    case = []
+    lat = []
+    lon = []
+    with open('covidPr_app/static/ess/district.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for i in csv_reader:
+            name.append(str(i[0]))
+            case.append(int(i[1]))
+            lat.append(float(i[2]))
+            lon.append(float(i[3]))
+    return name, case, lat, lon

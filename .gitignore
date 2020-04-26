@@ -8,6 +8,7 @@ asifsabir/
 Simple-Image-steganography-System/
 Covid-19-Predictor-BD/
 covidPr_app/csvHandler.py
+covidPr_app/static/ess/
 # C extensions
 *.so
 

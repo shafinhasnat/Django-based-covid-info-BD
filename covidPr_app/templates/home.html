@@ -98,7 +98,7 @@
           <small>Tap on the markers for details.</small>
       </div>
       <div class="center-screen">
-      <div id="map" style="height:40vh; width:52vw"></div></div>
+      <div id="mapid" style="height:40vh; width:52vw"></div></div>
     </div>
   </div>
 <!-- [{% for i in data %}'{{ i.date }}',{% endfor %}]
@@ -222,8 +222,17 @@
             zoom: 6
          }
          
+         var map = new L.map('mapid', mapOptions);
+         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2hhZmluaGFzbmF0IiwiYSI6ImNrOWgzMWxkYjBzenkzb25hZXVtdGh0MngifQ.qmrBTDRAsIoUT_r7Wd6yMg', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1Ijoic2hhZmluaGFzbmF0IiwiYSI6ImNrOWgzMWxkYjBzenkzb25hZXVtdGh0MngifQ.qmrBTDRAsIoUT_r7Wd6yMg'
+}).addTo(map);
+         
          // Creating a map object
-         var map = new L.map('map', mapOptions);
          
          // Creating a Layer object
          var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');

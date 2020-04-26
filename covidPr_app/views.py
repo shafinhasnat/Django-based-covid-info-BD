@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import CovidData
-from .predict import forcast, predictionGraph
+from .predict import forcast, predictionGraph, division
 # Create your views here.
 
 def home(request):
@@ -16,11 +16,13 @@ def home(request):
 	# death_pred = abs(int(death_pred_total)-int(latest_data.death))
 
 	pred_death, pred_case = predictionGraph()
+
+	division_wise = division()
 	# print(case_pred, death_pred)
 	return render(request, 'home.html', {'data': data, 'title': title,
 	 'latest_data': latest_data, 'death_percentage': death_percentage, 'latest_case': latest_case,
 	  'latest_death': latest_death, 'latest_recover': latest_recover, 
-	  'case_pred': case_pred, 'death_pred': death_pred, 'pred_death': pred_death, 'pred_case': pred_case})
+	  'case_pred': case_pred, 'death_pred': death_pred, 'pred_death': pred_death, 'pred_case': pred_case, 'division_wise': division_wise})
 	
 
 def details(request):

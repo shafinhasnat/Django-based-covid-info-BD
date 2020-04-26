@@ -1,6 +1,6 @@
 import numpy as np
 import pickle 
-
+import csv
 #loading the dumped files
 def forcast():
     loaded_cases=pickle.load(open('covidPr_app/static/ess/model_cases.pkl','rb'))
@@ -20,3 +20,11 @@ def predictionGraph():
     for i in loaded_cases_plus_pred:
         pred_case.append(int(i[0]))
     return pred_death, pred_case
+
+def division():
+    num = []
+    with open('covidPr_app/static/ess/division.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for i in csv_reader:
+            num.append(int(i[1]))
+    return num

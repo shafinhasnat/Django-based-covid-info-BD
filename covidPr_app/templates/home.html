@@ -25,7 +25,6 @@
           
         </table>
     </div>
-    
     <div class='border border-dark rounded-lg p-2 mb-4'>
       <div class="border-bottom mb-4 p-2">
           <h3>
@@ -90,6 +89,16 @@
         Graph of recovery in Bangladesh:
       </h3>
       <canvas id="recover" style="height:30vh; width:50vw"></canvas>
+    </div>
+    <div class='border border-dark rounded-lg p-2 mb-4'>
+      <div class="border-bottom mb-4 p-2">
+          <h3>
+            Division wise case distribution:
+          </h3>
+          <small>Tap on the markers for details.</small>
+      </div>
+      <div class="center-screen">
+      <div id="map" style="height:40vh; width:52vw"></div></div>
     </div>
   </div>
 <!-- [{% for i in data %}'{{ i.date }}',{% endfor %}]
@@ -206,5 +215,60 @@
         }
     });
 
+
+         // Creating map options
+         var mapOptions = {
+            center: [23.777176,   90.399452],
+            zoom: 6
+         }
+         
+         // Creating a map object
+         var map = new L.map('map', mapOptions);
+         
+         // Creating a Layer object
+         var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+         
+         // Adding layer to the map
+         map.addLayer(layer);
+          
+          
+         var markerDHK = L.marker([23.777176,   90.399452]);
+         markerDHK.bindPopup('<p class="border-bottom"><b>Dhaka division</b><p>Cases: {{ division_wise.0 }}').openPopup();
+         markerDHK.addTo(map);
+          
+          
+         var markerCTG = L.marker([22.3569,   91.7832]);
+         markerCTG.bindPopup('<p class="border-bottom"><b>Chattogram division</b><p>Cases: {{ division_wise.1 }}').openPopup();
+         markerCTG.addTo(map);
+          
+          
+         var markerKLN = L.marker([22.8456,   89.5403]);
+         markerKLN.bindPopup('<p class="border-bottom"><b>Khulna division</b><p>Cases: {{ division_wise.4 }}').openPopup();
+         markerKLN.addTo(map);
+          
+          
+         var markerSYL = L.marker([24.8949,   91.8687]);
+         markerSYL.bindPopup('<p class="border-bottom"><b>Sylhet division</b><p>Cases: {{ division_wise.2 }}').openPopup();
+         markerSYL.addTo(map);
+          
+          
+         var markerRNG = L.marker([25.7439,   89.2752]);
+         markerRNG.bindPopup('<p class="border-bottom"><b>Rangpur division</b><p>Cases: {{ division_wise.3 }}').openPopup();
+         markerRNG.addTo(map);
+          
+          
+         var markerBAR = L.marker([22.7010,   90.3535]);
+         markerBAR.bindPopup('<p class="border-bottom"><b>Barishal division</b><p>Cases: {{ division_wise.6 }}').openPopup();
+         markerBAR.addTo(map);
+          
+          
+         var markerRAJ = L.marker([24.3745,   88.6042]);
+         markerRAJ.bindPopup('<p class="border-bottom"><b>Rajshahi division</b><p>Cases: {{ division_wise.7 }}').openPopup();
+         markerRAJ.addTo(map);
+          
+          
+         var markerMYM = L.marker([24.7471,   90.4203]);
+         markerMYM.bindPopup('<p class="border-bottom"><b>Mymensingh  division</b><p>Cases: {{ division_wise5 }}').openPopup()
+         markerMYM.addTo(map);
   </script>
 {% endblock %}

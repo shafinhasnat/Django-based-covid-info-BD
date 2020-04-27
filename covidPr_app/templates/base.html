@@ -58,6 +58,7 @@
     height: 30px;
     object-fit: contain;
     }
+    .dropdown-item:hover{background-color: #343a40;}
     @media only screen and (max-width: 1000px){
     .dash {
     width: 200px; /* You can set the dimensions to whatever you want */
@@ -143,6 +144,15 @@
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
               <a class="nav-item nav-link" href="https://covidquiz.herokuapp.com/">covidquiz</a>
+              <div class="dropdown">
+                <button class="btn btn-outline-light btn-sm dropdown-toggle mt-1" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Downloadable resources
+                </button>
+                <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenu2">
+                  <a href="{% static 'ess/COVID-19_in_bangladesh.csv' %}" class="dropdown-item text-light" type="button" download>Total update csv</a>
+                  <a href="{% static 'ess/district.csv' %}" class="dropdown-item text-light" type="button" download>District update csv</a>
+                </div>
+              </div>              
             </div>
           </div>
         </div>
